@@ -1,0 +1,99 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+
+    <!-- BannerView -->
+    <declare-styleable name="BannerView">
+        <!-- 是否显示指示器 -->
+        <attr name="showIndicator" format="boolean" />
+        <!-- 指示器背景 -->
+        <attr name="indicatorBackground" format="reference|color" />
+        <!-- 指示器 -->
+        <attr name="indicatorDrawable" format="reference" />
+        <!-- 指示器高度 -->
+        <attr name="indicatorHeight" format="dimension" />
+        <!-- 指示器间距 -->
+        <attr name="indicatorSpacing" format="dimension" />
+        <!-- 指示器的位置 -->
+        <attr name="indicatorGravity" format="integer">
+            <flag name="top" value="0x30" />
+            <flag name="bottom" value="0x50" />
+            <flag name="left" value="0x03" />
+            <flag name="right" value="0x05" />
+            <flag name="center_horizontal" value="0x01" />
+        </attr>
+        <!-- 指示器左内边距 -->
+        <attr name="indicatorPaddingStart" format="dimension" />
+        <!-- 指示器右内边距 -->
+        <attr name="indicatorPaddingEnd" format="dimension" />
+        <!-- 指示器左外边距 -->
+        <attr name="indicatorMarginStart" format="dimension" />
+        <!-- 指示器右外边距 -->
+        <attr name="indicatorMarginEnd" format="dimension" />
+        <!-- 指示器上外边距 -->
+        <attr name="indicatorMarginTop" format="dimension" />
+        <!-- 指示器下外边距 -->
+        <attr name="indicatorMarginBottom" format="dimension" />
+
+        <!-- 是否是数字指示器 -->
+        <attr name="isNumberIndicator" format="boolean" />
+        <!-- 数字指示器文字颜色 -->
+        <attr name="numberIndicatorTextColor" format="reference|color" />
+        <!-- 数字指示器文字大小 -->
+        <attr name="numberIndicatorTextSize" format="dimension" />
+
+        <!-- 是否开启自动轮播 -->
+        <attr name="autoplay" format="boolean" />
+        <!-- 是否开启循环播放 -->
+        <attr name="loopPlay" format="boolean" />
+        <!-- 自动轮播的时间间隔 -->
+        <attr name="autoplayInterval" format="integer" />
+        <!-- 页码切换过程的时间长度 -->
+        <attr name="pageChangeDuration" format="integer" />
+        <attr name="pageLimit" format="integer" />
+        <!-- 页面区域距离 BannerView 顶部的距离 -->
+        <attr name="pagePaddingTop" format="dimension" />
+        <!-- 页面区域距离 BannerView 底部的距离 -->
+        <attr name="pagePaddingBottom" format="dimension" />
+        <!-- 页面区域距离 BannerView 左边的距离 -->
+        <attr name="pagePaddingStart" format="dimension" />
+        <!-- 页面区域距离 BannerView 右边 的距离 -->
+        <attr name="pagePaddingEnd" format="dimension" />
+
+        <!-- 是否显示文本 -->
+        <attr name="showDisplayText" format="boolean" />
+        <!-- 文本颜色 -->
+        <attr name="displayTextColor" format="reference|color" />
+        <!-- 文本大小 -->
+        <attr name="displayTextSize" format="dimension" />
+        <!-- 文本最多显示行数 -->
+        <attr name="displayTextLines" format="integer" />
+        <!-- 文本style Default text typeface style. -->
+        <attr name="displayTextStyle"  format="integer">
+            <flag name="normal" value="0" />
+            <flag name="bold" value="1" />
+            <flag name="italic" value="2" />
+        </attr>
+        <!-- 文本背景 -->
+        <attr name="displayTextBackground" format="reference|color" />
+        <!-- 文本背景高度 -->
+        <attr name="displayTextBgHeight" format="dimension" />
+        <attr name="displayTextMarginTop" format="dimension" />
+        <attr name="displayTextMarginBottom" format="dimension" />
+        <attr name="displayTextPaddingStart" format="dimension" />
+        <attr name="displayTextPaddingEnd" format="dimension" />
+        <!-- 文本相对于父布局的位置 -->
+        <attr name="displayTextLayoutGravity" format="integer">
+            <flag name="top" value="0x30" />
+            <flag name="bottom" value="0x50" />
+            <flag name="center_vertical" value="0x10" />
+        </attr>
+        <!-- 文本内部的位置 -->
+        <attr name="displayTextGravity" format="integer">
+            <flag name="left" value="0x03" />
+            <flag name="right" value="0x05" />
+            <flag name="center_horizontal" value="0x01" />
+        </attr>
+
+    </declare-styleable>
+
+</resources>

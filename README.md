@@ -8,6 +8,23 @@ Android基于ViewPage2的轻量级Kotlin版BannerView，功能全面，易定制
 
 # 使用
 
+- 添加gradle依赖（version=[![](https://jitpack.io/v/zhangzicheng2019/BannerView-Android.svg)](https://jitpack.io/#zhangzicheng2019/BannerView-Android)）
+
+```groovy
+//Add it in your root build.gradle at the end of repositories:
+allprojects {
+	repositories {
+		...
+		maven { url 'https://jitpack.io' }
+	}
+}
+
+//Add it in your app build.gradle
+dependencies {
+    implementation 'com.github.zhangzicheng2019:BannerView-Android:$version'
+}
+```  
+
 - 布局文件中声明（更多属性说明详见 #自定义属性说明）
 
   ```xml

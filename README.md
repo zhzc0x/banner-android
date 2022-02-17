@@ -21,7 +21,7 @@ Android Kotlin基于ViewPage2和ViewBinding的轻量级BannerView，功能全面
   
   //Add it in your app build.gradle
   dependencies {
-      implementation 'com.github.zhangzicheng2019:BannerView-Android:$version'
+      implementation 'com.github.zicheng2019:banner-android:$version'
   }
   ```  
 

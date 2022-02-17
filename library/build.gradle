@@ -47,17 +47,3 @@ dependencies {
     implementation "org.jetbrains.kotlin:kotlin-reflect:1.6.10"
     implementation "org.jetbrains.kotlinx:kotlinx-coroutines-android:1.5.2"
 }
-
-afterEvaluate {
-    publishing {
-        publications {
-            // Creates a Maven publication called "release".
-            release(MavenPublication) {
-                from components.release
-                groupId = 'com.github.zicheng2019'
-                artifactId = 'banner-android'
-                version = '1.0.2'
-            }
-        }
-    }
-}

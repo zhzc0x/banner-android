@@ -8,7 +8,7 @@ Android基于ViewPage2的轻量级Kotlin版BannerView，功能全面，易定制
 
 # 使用
 
-- 布局文件中声明（更多属性说明详见）
+- 布局文件中声明（更多属性说明详见 #自定义属性说明）
 
   ```xml
   <com.github.zicheng.banner.BannerView
@@ -40,7 +40,6 @@ Android基于ViewPage2的轻量级Kotlin版BannerView，功能全面，易定制
   //加载本地图片
   binding.bannerView1.setData(dataList1, dataList1.map { it.displayText }) { itemBinding, data ->
           itemBinding.root.setImageResource(data.imageId)
-          itemBinding.root.scaleType = ImageView.ScaleType.CENTER_CROP
           itemBinding.root.setOnClickListener {
               Toast.makeText(this, "${data.displayText}: 被点击了！", Toast.LENGTH_SHORT).show()
           }

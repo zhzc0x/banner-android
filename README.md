@@ -8,7 +8,7 @@ Android Kotlin基于ViewPage2和ViewBinding的轻量级BannerView，功能全面
 
 # 使用
 
-- 添加gradle依赖（version=[![](https://jitpack.io/v/zhangzicheng2019/BannerView-Android.svg)](https://jitpack.io/#zhangzicheng2019/BannerView-Android)）
+- 添加gradle依赖（version=[![](https://jitpack.io/v/zicheng2019/banner-android.svg)](https://jitpack.io/#zicheng2019/banner-android)）
 
   ```groovy
   //Add it in your root build.gradle at the end of repositories:

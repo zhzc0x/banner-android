@@ -2,9 +2,9 @@
 
 Android基于ViewPage2的轻量级Kotlin版BannerView，功能全面，易定制扩展
 
-# Demo演示
+# Demo效果图
 
-<img src="https://github.com/zhangzicheng2019/BannerView-Android/blob/master/demo.gif" />
+<img src="https://github.com/zhangzicheng2019/BannerView-Android/blob/master/demo.gif" style="zoom:60%;" />
 
 # 使用
 

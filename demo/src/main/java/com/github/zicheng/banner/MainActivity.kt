@@ -1,7 +1,6 @@
 package com.github.zicheng.banner
 
 import android.os.Bundle
-import android.widget.ImageView
 import android.widget.Toast
 import androidx.appcompat.app.AppCompatActivity
 import androidx.viewpager2.widget.MarginPageTransformer
@@ -44,7 +43,6 @@ class MainActivity : AppCompatActivity() {
 
         binding.bannerView1.setData(dataList1, dataList1.map { it.displayText }) { itemBinding, data ->
             itemBinding.root.setImageResource(data.imageId)
-            itemBinding.root.scaleType = ImageView.ScaleType.CENTER_CROP
             itemBinding.root.setOnClickListener {
                 Toast.makeText(this, "${data.displayText}: 被点击了！", Toast.LENGTH_SHORT).show()
             }
@@ -53,7 +51,6 @@ class MainActivity : AppCompatActivity() {
 
         binding.bannerView2.setData(dataList2, dataList2.map { it.displayText }) { itemBinding, data ->
             itemBinding.root.setImageResource(data.imageId)
-            itemBinding.root.scaleType = ImageView.ScaleType.CENTER_CROP
             itemBinding.root.setOnClickListener {
                 Toast.makeText(this, "${data.displayText}: 被点击了！", Toast.LENGTH_SHORT).show()
             }

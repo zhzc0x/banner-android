@@ -1,6 +1,6 @@
 # BannerView-Android
 
-Android基于ViewPage2的轻量级Kotlin版BannerView，功能全面，易定制扩展
+Android Kotlin基于ViewPage2和ViewBinding的轻量级BannerView，功能全面，易定制扩展
 
 # Demo效果图
 
@@ -10,20 +10,20 @@ Android基于ViewPage2的轻量级Kotlin版BannerView，功能全面，易定制
 
 - 添加gradle依赖（version=[![](https://jitpack.io/v/zhangzicheng2019/BannerView-Android.svg)](https://jitpack.io/#zhangzicheng2019/BannerView-Android)）
 
-```groovy
-//Add it in your root build.gradle at the end of repositories:
-allprojects {
+  ```groovy
+  //Add it in your root build.gradle at the end of repositories:
+  allprojects {
 	repositories {
 		...
-		maven { url 'https://jitpack.io' }
-	}
-}
-
-//Add it in your app build.gradle
-dependencies {
-    implementation 'com.github.zhangzicheng2019:BannerView-Android:$version'
-}
-```  
+  		maven { url 'https://jitpack.io' }
+  	}
+  }
+  
+  //Add it in your app build.gradle
+  dependencies {
+      implementation 'com.github.zhangzicheng2019:BannerView-Android:$version'
+  }
+  ```  
 
 - 布局文件中声明（更多属性说明详见 #自定义属性说明）
 

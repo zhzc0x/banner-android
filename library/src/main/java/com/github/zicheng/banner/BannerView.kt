@@ -1,7 +1,6 @@
 package com.github.zicheng.banner
 
 import android.animation.Animator
-import android.animation.TimeInterpolator
 import android.animation.ValueAnimator
 import android.annotation.SuppressLint
 import android.content.Context
@@ -414,7 +413,7 @@ class BannerView @JvmOverloads constructor(context: Context, attrs: AttributeSet
     }
 
     private fun startAutoplay(){
-        if(adapter == null || dataSize <= 1){
+        if(adapter == null || dataSize <= 1 || visibility != VISIBLE){
             return
         }
         stopAutoplay()
@@ -427,6 +426,17 @@ class BannerView @JvmOverloads constructor(context: Context, attrs: AttributeSet
                     viewPager.setCurrentItemWithAnim(viewPager.currentItem + 1,
                         pageChangeDuration.toLong(), viewPager.width - pagePaddingStart - pagePaddingEnd)
                 }
+            }
+        }
+    }
+
+    override fun onVisibilityChanged(changedView: View, visibility: Int) {
+        super.onVisibilityChanged(changedView, visibility)
+        if(autoplay){
+            if(visibility == VISIBLE){
+                startAutoplay()
+            } else {
+                stopAutoplay()
             }
         }
     }
@@ -478,31 +488,33 @@ class BannerView @JvmOverloads constructor(context: Context, attrs: AttributeSet
         }
     }
 
-    //https://blog.csdn.net/HBK_MySummerCT/article/details/104534851
-    private fun ViewPager2.setCurrentItemWithAnim(
-        item: Int,
-        duration: Long,
-        pagePxWidth: Int = width, // 使用viewpager2.getWidth()获取
-        interpolator: TimeInterpolator = AccelerateDecelerateInterpolator(),
-    ) {
-        val pxToDrag: Int = pagePxWidth * (item - currentItem)
-        val animator = ValueAnimator.ofInt(0, pxToDrag)
-        var previousValue = 0
-        animator.addUpdateListener { valueAnimator ->
+    private var previousValue = 0
+    private val pageChangeAnimator = ValueAnimator().apply {
+        addUpdateListener { valueAnimator ->
             val currentValue = valueAnimator.animatedValue as Int
             val currentPxToDrag = (currentValue - previousValue).toFloat()
-            fakeDragBy(-currentPxToDrag)
+            viewPager.fakeDragBy(-currentPxToDrag)
             previousValue = currentValue
         }
-        animator.addListener(object : Animator.AnimatorListener {
-            override fun onAnimationStart(animation: Animator?) { beginFakeDrag() }
-            override fun onAnimationEnd(animation: Animator?) { endFakeDrag() }
-            override fun onAnimationCancel(animation: Animator?) { }
+        addListener(object : Animator.AnimatorListener {
+            override fun onAnimationStart(animation: Animator?) {
+                previousValue = 0
+                viewPager.beginFakeDrag()
+            }
+            override fun onAnimationEnd(animation: Animator?) { viewPager.endFakeDrag() }
+            override fun onAnimationCancel(animation: Animator?) { viewPager.endFakeDrag() }
             override fun onAnimationRepeat(animation: Animator?) { }
         })
-        animator.interpolator = interpolator
-        animator.duration = duration
-        animator.start()
+        interpolator = AccelerateDecelerateInterpolator()
+    }
+    private fun ViewPager2.setCurrentItemWithAnim(item: Int, duration: Long, pagePxWidth: Int = width, ) {
+        if(pagePxWidth <= 0){
+            return
+        }
+        val pxToDrag: Int = pagePxWidth * (item - currentItem)
+        pageChangeAnimator.setIntValues(0, pxToDrag)
+        pageChangeAnimator.duration = duration
+        pageChangeAnimator.start()
     }
 
 }

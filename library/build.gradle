@@ -4,7 +4,7 @@ plugins {
     id 'maven-publish'
 }
 group = 'com.github.zicheng2019'
-version = '1.0.2'
+version = project.versionName
 
 android {
     compileSdk 32
@@ -56,7 +56,7 @@ afterEvaluate {
                 from components.release
                 groupId = 'com.github.zicheng2019'
                 artifactId = 'banner-android'
-                version = '1.0.2'
+                version = project.versionName
             }
         }
     }

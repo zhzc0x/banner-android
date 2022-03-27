@@ -4,7 +4,7 @@ Android Kotlin基于ViewPage2和ViewBinding的轻量级BannerView，功能全面
 
 # Demo效果图
 
-<img src="https://github.com/zhangzicheng2019/BannerView-Android/blob/master/demo.gif" style="zoom:40%;" />
+<img src="https://github.com/zhangzicheng2019/BannerView-Android/blob/master/demo.gif" />
 
 # 使用
 

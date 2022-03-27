@@ -4,7 +4,7 @@ Android Kotlin基于ViewPage2和ViewBinding的轻量级BannerView，功能全面
 
 # Demo效果图
 
-<img src="https://github.com/zhangzicheng2019/BannerView-Android/blob/master/demo.gif" style="zoom:60%;" />
+<img src="https://github.com/zhangzicheng2019/BannerView-Android/blob/master/demo.gif" style="zoom:40%;" />
 
 # 使用
 
@@ -210,4 +210,20 @@ Android Kotlin基于ViewPage2和ViewBinding的轻量级BannerView，功能全面
         </attr>
     </declare-styleable>
     
-    
+# License
+
+```
+Copyright 2022 zicheng2019
+
+Licensed under the Apache License, Version 2.0 (the "License");
+you may not use this file except in compliance with the License.
+You may obtain a copy of the License at
+
+       http://www.apache.org/licenses/LICENSE-2.0
+
+Unless required by applicable law or agreed to in writing, software
+distributed under the License is distributed on an "AS IS" BASIS,
+WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
+See the License for the specific language governing permissions and
+limitations under the License.
+```

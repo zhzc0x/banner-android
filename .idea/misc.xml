@@ -3,8 +3,11 @@
   <component name="DesignSurface">
     <option name="filePathToZoomLevelMap">
       <map>
+        <entry key="..\:/work_space/BannerView-Android/demo/src/main/res/drawable/ic_more.xml" value="0.2895" />
         <entry key="..\:/work_space/BannerView-Android/demo/src/main/res/drawable/selector_banner_indicator.xml" value="0.217" />
         <entry key="..\:/work_space/BannerView-Android/demo/src/main/res/layout/activity_main.xml" value="0.39947916666666666" />
+        <entry key="..\:/work_space/BannerView-Android/demo/src/main/res/layout/activity_test_java.xml" value="0.39947916666666666" />
+        <entry key="..\:/work_space/BannerView-Android/demo/src/main/res/menu/main_activity_actions.xml" value="0.3984375" />
         <entry key="..\:/work_space/BannerView-Android/library/src/main/res/layout/item_banner_image.xml" value="0.39947916666666666" />
       </map>
     </option>

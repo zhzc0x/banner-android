@@ -289,19 +289,27 @@ class BannerView @JvmOverloads constructor(context: Context, attrs: AttributeSet
         addView(displayTv, displayTvLp)
     }
 
+    @JvmOverloads
     fun <M> setData(dataList: List<M>, displayTextList: List<String>? = null,
                     bind: (ItemBannerImageBinding, M) -> Unit){
         setData(dataList, displayTextList, ItemBannerImageBinding::class, bind)
     }
 
+    @JvmOverloads
     fun <VB: ViewBinding, M> setData(dataList: List<M>, displayTextList: List<String>? = null,
-                                     itemBinding: KClass<VB>, bind: (VB, M) -> Unit){
+                                     viewBindingClass: Class<VB>, bind: (VB, M) -> Unit){
+        setData(dataList, displayTextList, viewBindingClass.kotlin, bind)
+    }
+
+    @JvmOverloads
+    fun <VB: ViewBinding, M> setData(dataList: List<M>, displayTextList: List<String>? = null,
+                                     viewBindingKClass: KClass<VB>, bind: (VB, M) -> Unit){
         if(displayTextList != null && displayTextList.size != dataList.size){
             throw IllegalStateException("The length of displayTextList and dataList must be equal!")
         }
         this.displayTextList = displayTextList
         dataSize = dataList.size
-        adapter = Adapter(dataList, itemBinding, bind)
+        adapter = Adapter(dataList, viewBindingKClass, bind)
         viewPager.adapter = adapter
         if(showIndicator){
             updateIndicator()
@@ -453,7 +461,7 @@ class BannerView @JvmOverloads constructor(context: Context, attrs: AttributeSet
     }
 
     private inner class Adapter<VB: ViewBinding, M>(private val dataList: List<M>,
-                                              private val itemClass: KClass<VB>,
+                                              private val itemKClass: KClass<VB>,
                                               private val bind: (VB, M) -> Unit): RecyclerView.Adapter<Adapter<VB, M>.ViewHolder>(){
 
         inner class ViewHolder(private val itemBinding: VB): RecyclerView.ViewHolder(itemBinding.root){
@@ -465,7 +473,7 @@ class BannerView @JvmOverloads constructor(context: Context, attrs: AttributeSet
         }
 
         override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): ViewHolder {
-            for(func in itemClass.functions){
+            for(func in itemKClass.functions){
                 if(func.name == "inflate" && func.parameters.size == 3){
                     val itemBinding = func.call(LayoutInflater.from(parent.context), parent, false)
                     @Suppress("UNCHECKED_CAST")

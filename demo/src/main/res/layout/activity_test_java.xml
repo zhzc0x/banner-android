@@ -1,0 +1,36 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:orientation="vertical">
+
+
+    <com.github.zicheng.banner.BannerView
+        android:id="@+id/bannerView1"
+        android:layout_width="match_parent"
+        android:layout_height="220dp"
+        app:autoplay="true"
+        app:indicatorGravity="bottom|center_horizontal"
+        app:isNumberIndicator="false"
+        app:layout_constraintTop_toTopOf="parent"
+        app:loopPlay="true" />
+
+    <com.github.zicheng.banner.BannerView
+        android:id="@+id/bannerView2"
+        android:layout_width="match_parent"
+        android:layout_height="220dp"
+        app:autoplay="true"
+        android:layout_marginTop="12dp"
+        app:displayTextBackground="#4D000000"
+        app:displayTextColor="@color/white"
+        app:displayTextGravity="left"
+        app:displayTextSize="16sp"
+        app:displayTextStyle="bold"
+        app:indicatorGravity="bottom|right"
+        app:isNumberIndicator="false"
+        app:layout_constraintTop_toTopOf="parent"
+        app:loopPlay="true" />
+
+
+</LinearLayout>

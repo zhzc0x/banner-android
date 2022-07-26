@@ -1,6 +1,9 @@
 package com.github.zicheng.banner
 
+import android.content.Intent
 import android.os.Bundle
+import android.view.Menu
+import android.view.MenuItem
 import android.widget.Toast
 import androidx.appcompat.app.AppCompatActivity
 import androidx.viewpager2.widget.MarginPageTransformer
@@ -9,6 +12,7 @@ import com.github.zicheng.banner.been.BannerInfo
 import com.github.zicheng.banner.databinding.ActivityMainBinding
 import com.github.zicheng.banner.transformer.FlipPageTransformer
 import com.github.zicheng.banner.transformer.ZoomPageTransformer
+
 
 class MainActivity : AppCompatActivity() {
 
@@ -76,6 +80,24 @@ class MainActivity : AppCompatActivity() {
         super.onPause()
         binding.bannerView1.setAutoplay(false)
         binding.bannerView2.setAutoplay(false)
+    }
+
+    override fun onCreateOptionsMenu(menu: Menu?): Boolean {
+        // Inflate the menu items for use in the action bar
+        val inflater = menuInflater
+        inflater.inflate(R.menu.main_activity_actions, menu)
+        return super.onCreateOptionsMenu(menu)
+    }
+
+    override fun onOptionsItemSelected(item: MenuItem): Boolean {
+        // Handle presses on the action bar items
+        return when (item.itemId) {
+            R.id.action_test_java -> {
+                startActivity(Intent(this, TestJavaActivity::class.java))
+                true
+            }
+            else -> super.onOptionsItemSelected(item)
+        }
     }
 
 }

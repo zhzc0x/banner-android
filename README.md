@@ -23,7 +23,7 @@ Android Kotlin基于ViewPage2和ViewBinding的轻量级BannerView，功能全面
   dependencies {
       implementation 'com.github.zicheng2019:banner-android:$version'
   }
-  ```  
+  ```
 
 - 布局文件中声明（更多属性说明详见 #自定义属性说明）
 
@@ -45,7 +45,7 @@ Android Kotlin基于ViewPage2和ViewBinding的轻量级BannerView，功能全面
           app:layout_constraintTop_toTopOf="parent" /> 
   ```
 
-- 代码调用
+- 代码调用（Kotlin）
 
   ```kotlin
   val dataList1 = listOf(
@@ -93,6 +93,44 @@ Android Kotlin基于ViewPage2和ViewBinding的轻量级BannerView，功能全面
   }
   ```
 
+- 代码调用（Java）
+
+  ```java
+  	private ActivityTestJavaBinding viewBinding;
+  
+      @Override
+      protected void onCreate(@Nullable Bundle savedInstanceState) {
+          super.onCreate(savedInstanceState);
+          viewBinding = ActivityTestJavaBinding.inflate(getLayoutInflater());
+          setContentView(viewBinding.getRoot());
+          List<Integer> dataList = new ArrayList<>();
+          dataList.add(R.drawable.ic_test1);
+          dataList.add(R.drawable.ic_test2);
+          dataList.add(R.drawable.ic_test3);
+          viewBinding.bannerView1.setData(dataList, new Function2<ItemBannerImageBinding, Integer, Unit>() {
+              @Override
+              public Unit invoke(ItemBannerImageBinding itemBannerImageBinding, Integer integer) {
+                  itemBannerImageBinding.getRoot().setBackgroundResource(integer);
+                  return Unit.INSTANCE;
+              }
+          });
+          List<String> textList = new ArrayList<>();
+          textList.add("我是图片test1");
+          textList.add("我是图片test2");
+          textList.add("我是图片test3");
+          viewBinding.bannerView2.setData(dataList, textList, ItemBannerImageBinding.class,
+                  new Function2<ItemBannerImageBinding, Integer, Unit>() {
+              @Override
+              public Unit invoke(ItemBannerImageBinding itemBannerImageBinding, Integer integer) {
+                  itemBannerImageBinding.getRoot().setBackgroundResource(integer);
+                  return Unit.INSTANCE;
+              }
+          });
+      }
+  ```
+  
+  
+  
 - API说明
 
   ```kotlin
@@ -155,7 +193,7 @@ Android Kotlin基于ViewPage2和ViewBinding的轻量级BannerView，功能全面
         <attr name="numberIndicatorTextColor" format="reference|color" />
         <!-- 数字指示器文字大小 -->
         <attr name="numberIndicatorTextSize" format="dimension" />
-
+    
         <!-- 是否开启自动轮播 -->
         <attr name="autoplay" format="boolean" />
         <!-- 是否开启循环播放 -->
@@ -173,7 +211,7 @@ Android Kotlin基于ViewPage2和ViewBinding的轻量级BannerView，功能全面
         <attr name="pagePaddingStart" format="dimension" />
         <!-- 页面区域距离 BannerView 右边 的距离 -->
         <attr name="pagePaddingEnd" format="dimension" />
-
+    
         <!-- 是否显示文本 -->
         <attr name="showDisplayText" format="boolean" />
         <!-- 文本颜色 -->
@@ -209,7 +247,7 @@ Android Kotlin基于ViewPage2和ViewBinding的轻量级BannerView，功能全面
             <flag name="center_horizontal" value="0x01" />
         </attr>
     </declare-styleable>
-    
+
 # License
 
 ```

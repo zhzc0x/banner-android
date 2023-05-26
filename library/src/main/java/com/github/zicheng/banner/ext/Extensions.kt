@@ -18,5 +18,5 @@ internal val Int.dp
         TypedValue.COMPLEX_UNIT_DIP,
         this.toFloat(),
         displayMetrics
-    )
+    ).toInt()
 

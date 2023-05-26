@@ -15,8 +15,6 @@ import android.util.TypedValue
 import android.view.*
 import android.view.animation.AccelerateDecelerateInterpolator
 import android.widget.*
-import androidx.annotation.NonNull
-import androidx.annotation.Nullable
 import androidx.core.view.children
 import androidx.recyclerview.widget.RecyclerView
 import androidx.viewbinding.ViewBinding
@@ -33,8 +31,8 @@ class BannerView @JvmOverloads constructor(context: Context, attrs: AttributeSet
     private var showIndicator = true
     private var indicatorBackground: Drawable = ColorDrawable(Color.TRANSPARENT)
     private var indicatorDrawableResId = R.drawable.selector_banner_indicator
-    private var indicatorHeight = 44.dp.toInt()
-    private var indicatorSpacing = 16.dp.toInt()
+    private var indicatorHeight = 44.dp
+    private var indicatorSpacing = 16.dp
     private var indicatorGravity = Gravity.BOTTOM or Gravity.CENTER_HORIZONTAL
     private var indicatorPaddingStart = indicatorSpacing
     private var indicatorPaddingEnd = indicatorSpacing
@@ -45,7 +43,7 @@ class BannerView @JvmOverloads constructor(context: Context, attrs: AttributeSet
 
     private var isNumberIndicator = false
     private var numberIndicatorTextColor = Color.WHITE
-    private var numberIndicatorTextSize = 14.dp.toInt()
+    private var numberIndicatorTextSize = 14.dp
     private var autoplay = true
     private var loopPlay = true
     private var autoplayInterval = 3000//ms
@@ -58,15 +56,15 @@ class BannerView @JvmOverloads constructor(context: Context, attrs: AttributeSet
 
     private var showDisplayText = true
     private var displayTextColor = Color.WHITE
-    private var displayTextSize = 14.dp.toInt()
+    private var displayTextSize = 14.dp
     private var displayTextLines = 1
     private var displayTextStyle = Typeface.NORMAL
     private var displayTextBackground: Drawable = ColorDrawable(Color.TRANSPARENT)
-    private var displayTextBgHeight = 44.dp.toInt()
+    private var displayTextBgHeight = 44.dp
     private var displayTextMarginTop = 0
     private var displayTextMarginBottom = 0
-    private var displayTextPaddingStart = 16.dp.toInt()
-    private var displayTextPaddingEnd = 16.dp.toInt()
+    private var displayTextPaddingStart = 16.dp
+    private var displayTextPaddingEnd = 16.dp
     private var displayTextGravity = Gravity.CENTER_HORIZONTAL
     private var displayTextLayoutGravity = Gravity.BOTTOM
     private lateinit var displayTv: TextView
@@ -398,15 +396,15 @@ class BannerView @JvmOverloads constructor(context: Context, attrs: AttributeSet
         viewPager.overScrollMode = overScrollMode
     }
 
-    fun addOnPageChangeCallback(@NonNull callback: ViewPager2.OnPageChangeCallback){
+    fun addOnPageChangeCallback(callback: ViewPager2.OnPageChangeCallback){
         viewPager.registerOnPageChangeCallback(callback)
     }
 
-    fun removeOnPageChangeCallback(@NonNull callback: ViewPager2.OnPageChangeCallback){
+    fun removeOnPageChangeCallback(callback: ViewPager2.OnPageChangeCallback){
         viewPager.unregisterOnPageChangeCallback(callback)
     }
 
-    fun setPageTransformer(@Nullable transformer: ViewPager2.PageTransformer){
+    fun setPageTransformer(transformer: ViewPager2.PageTransformer?){
         viewPager.setPageTransformer(transformer)
     }
 
@@ -505,17 +503,17 @@ class BannerView @JvmOverloads constructor(context: Context, attrs: AttributeSet
             previousValue = currentValue
         }
         addListener(object : Animator.AnimatorListener {
-            override fun onAnimationStart(animation: Animator?) {
+            override fun onAnimationStart(animation: Animator) {
                 previousValue = 0
                 viewPager.beginFakeDrag()
             }
-            override fun onAnimationEnd(animation: Animator?) { viewPager.endFakeDrag() }
-            override fun onAnimationCancel(animation: Animator?) { viewPager.endFakeDrag() }
-            override fun onAnimationRepeat(animation: Animator?) { }
+            override fun onAnimationEnd(animation: Animator) { viewPager.endFakeDrag() }
+            override fun onAnimationCancel(animation: Animator) { viewPager.endFakeDrag() }
+            override fun onAnimationRepeat(animation: Animator) { }
         })
         interpolator = AccelerateDecelerateInterpolator()
     }
-    private fun ViewPager2.setCurrentItemWithAnim(item: Int, duration: Long, pagePxWidth: Int = width, ) {
+    private fun ViewPager2.setCurrentItemWithAnim(item: Int, duration: Long, pagePxWidth: Int = width) {
         if(pagePxWidth <= 0){
             return
         }

@@ -4,11 +4,11 @@ Android Kotlin基于ViewPage2和ViewBinding的轻量级BannerView，功能全面
 
 # Demo效果图
 
-<img src="https://github.com/zhangzicheng2019/BannerView-Android/blob/master/demo.gif" />
+<img src="https://github.com/zhzc0x/BannerView-Android/blob/master/demo.gif" />
 
 # 使用
 
-- 添加gradle依赖（version=[![](https://jitpack.io/v/zicheng2019/banner-android.svg)](https://jitpack.io/#zicheng2019/banner-android)）
+- 添加gradle依赖（version=[![](https://jitpack.io/v/zhzc0x/banner-android.svg)](https://jitpack.io/#zhzc0x/banner-android)）
 
   ```groovy
   //Add it in your root build.gradle at the end of repositories:
@@ -21,14 +21,14 @@ Android Kotlin基于ViewPage2和ViewBinding的轻量级BannerView，功能全面
   
   //Add it in your app build.gradle
   dependencies {
-      implementation 'com.github.zicheng2019:banner-android:$version'
+      implementation 'com.github.zhzc0x:banner-android:$version'
   }
   ```
 
 - 布局文件中声明（更多属性说明详见 #自定义属性说明）
 
   ```xml
-  <com.github.zicheng.banner.BannerView
+  <com.zhzc0x.banner.BannerView
           android:id="@+id/bannerView1"
           android:layout_width="match_parent"
           android:layout_height="0dp"
@@ -251,7 +251,7 @@ Android Kotlin基于ViewPage2和ViewBinding的轻量级BannerView，功能全面
 # License
 
 ```
-Copyright 2022 zicheng2019
+Copyright 2022 zhzc0x
 
 Licensed under the Apache License, Version 2.0 (the "License");
 you may not use this file except in compliance with the License.

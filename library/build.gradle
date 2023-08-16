@@ -3,7 +3,7 @@ plugins {
     id 'org.jetbrains.kotlin.android'
     id 'maven-publish'
 }
-group = 'com.github.zhzc0x'
+group = project.groupId
 version = project.versionName
 
 android {
@@ -55,8 +55,8 @@ afterEvaluate {
             // Creates a Maven publication called "release".
             release(MavenPublication) {
                 from components.release
-                groupId = 'com.github.zhzc0x'
-                artifactId = 'banner-android'
+                groupId = project.groupId
+                artifactId = project.artifactId
                 version = project.versionName
             }
         }

@@ -1,4 +1,4 @@
-package com.github.zicheng.banner
+package com.zhzc0x.banner
 
 import android.animation.Animator
 import android.animation.ValueAnimator
@@ -19,8 +19,9 @@ import androidx.core.view.children
 import androidx.recyclerview.widget.RecyclerView
 import androidx.viewbinding.ViewBinding
 import androidx.viewpager2.widget.ViewPager2
-import com.github.zicheng.banner.databinding.ItemBannerImageBinding
-import com.github.zicheng.banner.ext.dp
+import com.zhzc0x.banner.R
+import com.zhzc0x.banner.databinding.ItemBannerImageBinding
+import com.zhzc0x.banner.ext.dp
 import kotlinx.coroutines.*
 import kotlin.reflect.KClass
 import kotlin.reflect.full.functions

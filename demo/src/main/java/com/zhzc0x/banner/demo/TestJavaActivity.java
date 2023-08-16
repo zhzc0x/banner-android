@@ -1,4 +1,4 @@
-package com.github.zicheng.banner;
+package com.zhzc0x.banner.demo;
 
 import android.os.Bundle;
 import android.view.MenuItem;
@@ -8,8 +8,8 @@ import androidx.annotation.Nullable;
 import androidx.appcompat.app.ActionBar;
 import androidx.appcompat.app.AppCompatActivity;
 
-import com.github.zicheng.banner.databinding.ActivityTestJavaBinding;
-import com.github.zicheng.banner.databinding.ItemBannerImageBinding;
+import com.zhzc0x.banner.databinding.ItemBannerImageBinding;
+import com.zhzc0x.banner.demo.databinding.ActivityTestJavaBinding;
 
 import java.util.ArrayList;
 import java.util.List;

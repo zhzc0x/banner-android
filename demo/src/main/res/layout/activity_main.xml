@@ -5,9 +5,9 @@
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     android:background="@color/white"
-    tools:context=".MainActivity">
+    tools:context="com.zhzc0x.banner.demo.MainActivity">
 
-    <com.github.zicheng.banner.BannerView
+    <com.zhzc0x.banner.BannerView
         android:id="@+id/bannerView1"
         android:layout_width="match_parent"
         android:layout_height="0dp"
@@ -23,7 +23,7 @@
         app:layout_constraintBottom_toTopOf="@+id/bannerView2"
         app:layout_constraintTop_toTopOf="parent" />
 
-    <com.github.zicheng.banner.BannerView
+    <com.zhzc0x.banner.BannerView
         android:id="@+id/bannerView2"
         android:layout_width="match_parent"
         android:layout_height="0dp"
@@ -41,7 +41,7 @@
         app:layout_constraintBottom_toTopOf="@+id/bannerView3"
         app:pagePaddingBottom="44dp" />
 
-    <com.github.zicheng.banner.BannerView
+    <com.zhzc0x.banner.BannerView
         android:id="@+id/bannerView3"
         android:layout_width="match_parent"
         android:layout_height="0dp"

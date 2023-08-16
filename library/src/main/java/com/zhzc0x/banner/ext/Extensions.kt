@@ -1,4 +1,4 @@
-package com.github.zicheng.banner.ext
+package com.zhzc0x.banner.ext
 
 import android.content.res.Resources
 import android.util.DisplayMetrics

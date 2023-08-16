@@ -1,4 +1,4 @@
-package com.github.zicheng.banner.transformer
+package com.zhzc0x.banner.demo.transformer
 
 import android.view.View
 import androidx.viewpager2.widget.ViewPager2

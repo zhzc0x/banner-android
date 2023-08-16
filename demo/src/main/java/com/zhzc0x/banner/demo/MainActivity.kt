@@ -1,4 +1,4 @@
-package com.github.zicheng.banner
+package com.zhzc0x.banner.demo
 
 import android.content.Intent
 import android.os.Bundle
@@ -8,10 +8,10 @@ import android.widget.Toast
 import androidx.appcompat.app.AppCompatActivity
 import androidx.viewpager2.widget.MarginPageTransformer
 import com.bumptech.glide.Glide
-import com.github.zicheng.banner.been.BannerInfo
-import com.github.zicheng.banner.databinding.ActivityMainBinding
-import com.github.zicheng.banner.transformer.FlipPageTransformer
-import com.github.zicheng.banner.transformer.ZoomPageTransformer
+import com.zhzc0x.banner.demo.databinding.ActivityMainBinding
+import com.zhzc0x.banner.demo.been.BannerInfo
+import com.zhzc0x.banner.demo.transformer.FlipPageTransformer
+import com.zhzc0x.banner.demo.transformer.ZoomPageTransformer
 
 
 class MainActivity : AppCompatActivity() {

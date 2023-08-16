@@ -1,6 +1,6 @@
 <?xml version="1.0" encoding="utf-8"?>
 <manifest xmlns:android="http://schemas.android.com/apk/res/android"
-    package="com.github.zicheng.banner">
+    package="com.zhzc0x.banner.demo">
 
     <uses-permission android:name="android.permission.INTERNET" />
     
@@ -13,7 +13,7 @@
         android:theme="@style/Theme.BannerViewAndroid"
         android:networkSecurityConfig="@xml/network_security_config">
         <activity
-            android:name=".MainActivity"
+            android:name="com.zhzc0x.banner.demo.MainActivity"
             android:exported="true">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
@@ -22,7 +22,7 @@
             </intent-filter>
         </activity>
 
-        <activity android:name=".TestJavaActivity" />
+        <activity android:name="com.zhzc0x.banner.demo.TestJavaActivity" />
 
     </application>
 

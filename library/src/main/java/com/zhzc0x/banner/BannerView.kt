@@ -324,9 +324,6 @@ class BannerView @JvmOverloads constructor(context: Context, attrs: AttributeSet
 
     private fun updateIndicator(){
         indicatorParent.removeAllViews()
-        if(dataSize <= 1){
-            return
-        }
         if(!isNumberIndicator){
             for (i in 0 until dataSize) {
                 val indicatorLp = LinearLayout.LayoutParams(LinearLayout.LayoutParams.WRAP_CONTENT,

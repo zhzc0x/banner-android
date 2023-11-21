@@ -19,7 +19,6 @@ import androidx.core.view.children
 import androidx.recyclerview.widget.RecyclerView
 import androidx.viewbinding.ViewBinding
 import androidx.viewpager2.widget.ViewPager2
-import com.zhzc0x.banner.R
 import com.zhzc0x.banner.databinding.ItemBannerImageBinding
 import com.zhzc0x.banner.ext.dp
 import kotlinx.coroutines.*
@@ -265,6 +264,7 @@ class BannerView @JvmOverloads constructor(context: Context, attrs: AttributeSet
             gravity = Gravity.CENTER
             setPaddingRelative(indicatorPaddingStart, 0, indicatorPaddingEnd, 0)
             background = indicatorBackground
+            visibility = GONE
         }
         addView(indicatorParent, indicatorLp)
     }
@@ -359,6 +359,9 @@ class BannerView @JvmOverloads constructor(context: Context, attrs: AttributeSet
                 indicatorParent.children.forEachIndexed { index, child ->
                     child.isSelected = index == realPosition
                 }
+            }
+            if(indicatorParent.visibility != VISIBLE && dataSize > 1){
+                indicatorParent.visibility = VISIBLE
             }
         }
     }

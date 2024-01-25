@@ -248,6 +248,14 @@ Android Kotlin基于ViewPage2和ViewBinding的轻量级BannerView，功能全面
         </attr>
     </declare-styleable>
 
+# 混淆配置
+
+```
+-keepclassmembers class * implements androidx.viewbinding.ViewBinding {
+	public static ** inflate(...);
+}
+```
+
 # License
 
 ```

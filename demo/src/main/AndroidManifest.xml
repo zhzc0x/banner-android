@@ -22,7 +22,9 @@
             </intent-filter>
         </activity>
 
-        <activity android:name="com.zhzc0x.banner.demo.TestJavaActivity" />
+        <activity
+            android:name="com.zhzc0x.banner.demo.TestJavaActivity"
+            android:exported="true" />
 
     </application>
 

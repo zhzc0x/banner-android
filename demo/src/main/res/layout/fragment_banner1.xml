@@ -1,6 +1,41 @@
 <?xml version="1.0" encoding="utf-8"?>
 <androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
-             android:layout_width="match_parent"
-             android:layout_height="match_parent">
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    xmlns:app="http://schemas.android.com/apk/res-auto">
+
+    <com.zhzc0x.banner.NestedBannerView
+        android:id="@+id/bannerView1"
+        android:layout_width="match_parent"
+        android:layout_height="0dp"
+        app:autoplay="true"
+        app:loopPlay="true"
+        app:displayTextBackground="#4D000000"
+        app:displayTextColor="@color/white"
+        app:displayTextGravity="left"
+        app:displayTextSize="16sp"
+        app:displayTextStyle="bold"
+        app:indicatorGravity="bottom|right"
+        app:isNumberIndicator="false"
+        app:layout_constraintTop_toTopOf="parent"
+        app:layout_constraintHeight_percent="0.32"/>
+
+    <com.zhzc0x.banner.NestedBannerView
+        android:id="@+id/bannerView2"
+        android:layout_width="match_parent"
+        android:layout_height="0dp"
+        android:layout_marginTop="20dp"
+        app:displayTextBackground="#4D000000"
+        app:displayTextColor="@color/white"
+        app:displayTextGravity="center_horizontal"
+        app:displayTextLayoutGravity="top"
+        app:displayTextSize="16sp"
+        app:displayTextStyle="bold"
+        app:indicatorGravity="bottom|center_horizontal"
+        app:indicatorDrawable="@drawable/selector_banner_indicator_yellow"
+        app:isNumberIndicator="false"
+        app:layout_constraintTop_toBottomOf="@+id/bannerView1"
+        app:pagePaddingBottom="44dp"
+        app:layout_constraintHeight_percent="0.32" />
 
 </androidx.constraintlayout.widget.ConstraintLayout>

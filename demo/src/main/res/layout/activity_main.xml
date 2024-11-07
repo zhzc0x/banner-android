@@ -7,55 +7,18 @@
     android:background="@color/white"
     tools:context="com.zhzc0x.banner.demo.MainActivity">
 
-    <com.zhzc0x.banner.BannerView
-        android:id="@+id/bannerView1"
+    <com.google.android.material.tabs.TabLayout
+        android:id="@+id/tabLayout"
         android:layout_width="match_parent"
-        android:layout_height="0dp"
-        app:autoplay="true"
-        app:loopPlay="true"
-        app:displayTextBackground="#4D000000"
-        app:displayTextColor="@color/white"
-        app:displayTextGravity="left"
-        app:displayTextSize="16sp"
-        app:displayTextStyle="bold"
-        app:indicatorGravity="bottom|right"
-        app:isNumberIndicator="false"
-        app:layout_constraintBottom_toTopOf="@+id/bannerView2"
+        android:layout_height="44dp"
         app:layout_constraintTop_toTopOf="parent" />
 
-    <com.zhzc0x.banner.BannerView
-        android:id="@+id/bannerView2"
+    <androidx.viewpager2.widget.ViewPager2
+        android:id="@+id/viewPager"
         android:layout_width="match_parent"
         android:layout_height="0dp"
-        android:layout_marginTop="20dp"
-        app:displayTextBackground="#4D000000"
-        app:displayTextColor="@color/white"
-        app:displayTextGravity="center_horizontal"
-        app:displayTextLayoutGravity="top"
-        app:displayTextSize="16sp"
-        app:displayTextStyle="bold"
-        app:indicatorGravity="bottom|center_horizontal"
-        app:indicatorDrawable="@drawable/selector_banner_indicator_yellow"
-        app:isNumberIndicator="false"
-        app:layout_constraintTop_toBottomOf="@+id/bannerView1"
-        app:layout_constraintBottom_toTopOf="@+id/bannerView3"
-        app:pagePaddingBottom="44dp" />
-
-    <com.zhzc0x.banner.BannerView
-        android:id="@+id/bannerView3"
-        android:layout_width="match_parent"
-        android:layout_height="0dp"
-        app:displayTextBackground="#4D000000"
-        app:displayTextColor="@color/white"
-        app:displayTextGravity="left"
-        app:displayTextSize="16sp"
-        app:displayTextStyle="bold"
-        app:indicatorGravity="bottom|right"
-        app:isNumberIndicator="true"
-        android:layout_marginBottom="20dp"
-        app:layout_constraintTop_toBottomOf="@+id/bannerView2"
-        app:layout_constraintBottom_toBottomOf="parent"
-        app:pagePaddingStart="20dp"
-        app:pagePaddingEnd="20dp"/>
+        android:orientation="horizontal"
+        app:layout_constraintTop_toBottomOf="@id/tabLayout"
+        app:layout_constraintBottom_toBottomOf="parent" />
 
 </androidx.constraintlayout.widget.ConstraintLayout>

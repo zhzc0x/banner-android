@@ -25,8 +25,11 @@ import kotlinx.coroutines.*
 import kotlin.reflect.KClass
 import kotlin.reflect.full.functions
 
-class BannerView @JvmOverloads constructor(context: Context, attrs: AttributeSet?, defStyleAttr: Int = 0):
-    FrameLayout(context, attrs, defStyleAttr) {
+open class BannerView @JvmOverloads constructor(
+    context: Context,
+    attrs: AttributeSet?,
+    defStyleAttr: Int = 0
+): FrameLayout(context, attrs, defStyleAttr) {
 
     private var showIndicator = true
     private var indicatorBackground: Drawable = ColorDrawable(Color.TRANSPARENT)
@@ -44,8 +47,8 @@ class BannerView @JvmOverloads constructor(context: Context, attrs: AttributeSet
     private var isNumberIndicator = false
     private var numberIndicatorTextColor = Color.WHITE
     private var numberIndicatorTextSize = 14.dp
+    protected var loopPlay = true
     private var autoplay = true
-    private var loopPlay = true
     private var autoplayInterval = 3000//ms
     private var pageChangeDuration = 500//ms
     private var pageLimit = 1
@@ -79,13 +82,13 @@ class BannerView @JvmOverloads constructor(context: Context, attrs: AttributeSet
     private var displayTextList: List<String> ?= null
 
     init {
-        if(attrs != null){
+        if (attrs != null) {
             initCustomAttrs(context, attrs)
         }
         viewPager = ViewPager2(context)
         viewPager.orientation = ViewPager2.ORIENTATION_HORIZONTAL
         viewPager.offscreenPageLimit = pageLimit
-        viewPager.registerOnPageChangeCallback(object: ViewPager2.OnPageChangeCallback(){
+        viewPager.registerOnPageChangeCallback(object: ViewPager2.OnPageChangeCallback() {
             override fun onPageSelected(position: Int) {
                 switchIndicator(position)
             }
@@ -100,17 +103,17 @@ class BannerView @JvmOverloads constructor(context: Context, attrs: AttributeSet
             vpView.clipToPadding = false
         }
         val viewPageLp = LayoutParams(LayoutParams.MATCH_PARENT, LayoutParams.MATCH_PARENT)
-        addView(viewPager, viewPageLp)
-        if(showDisplayText){
+        this.addView(viewPager, viewPageLp)
+        if (showDisplayText) {
             initTitleTextLayout()
         }
-        if(showIndicator){
+        if (showIndicator) {
             initIndicatorParent()
         }
     }
 
     private fun setDisplayTv(position: Int, positionOffset: Float) {
-        if(!showDisplayText || displayTextList == null){
+        if (!showDisplayText || displayTextList == null) {
             return
         }
         val leftPosition: Int = position % dataSize
@@ -135,7 +138,7 @@ class BannerView @JvmOverloads constructor(context: Context, attrs: AttributeSet
         typedArray.recycle()
     }
 
-    private fun initCustomAttr(attr: Int, typedArray: TypedArray){
+    private fun initCustomAttr(attr: Int, typedArray: TypedArray) {
         when (attr) {
             R.styleable.BannerView_showIndicator -> {
                 showIndicator = typedArray.getBoolean(attr, showIndicator)
@@ -290,41 +293,43 @@ class BannerView @JvmOverloads constructor(context: Context, attrs: AttributeSet
 
     @JvmOverloads
     fun <M> setData(dataList: List<M>, displayTextList: List<String>? = null,
-                    bind: (ItemBannerImageBinding, M) -> Unit){
+                    bind: (ItemBannerImageBinding, M) -> Unit) {
         setData(dataList, displayTextList, ItemBannerImageBinding::class, bind)
     }
 
     @JvmOverloads
     fun <VB: ViewBinding, M> setData(dataList: List<M>, displayTextList: List<String>? = null,
-                                     viewBindingClass: Class<VB>, bind: (VB, M) -> Unit){
+                                     viewBindingClass: Class<VB>, bind: (VB, M) -> Unit) {
         setData(dataList, displayTextList, viewBindingClass.kotlin, bind)
     }
 
     @JvmOverloads
     fun <VB: ViewBinding, M> setData(dataList: List<M>, displayTextList: List<String>? = null,
-                                     viewBindingKClass: KClass<VB>, bind: (VB, M) -> Unit){
-        if(displayTextList != null && displayTextList.size != dataList.size){
+                                     viewBindingKClass: KClass<VB>, bind: (VB, M) -> Unit) {
+        if (displayTextList != null && displayTextList.size != dataList.size) {
             throw IllegalStateException("The length of displayTextList and dataList must be equal!")
         }
         this.displayTextList = displayTextList
         dataSize = dataList.size
         adapter = Adapter(dataList, viewBindingKClass, bind)
         viewPager.adapter = adapter
-        if(showIndicator){
+        if (showIndicator) {
             updateIndicator()
         }
-        if(loopPlay && dataSize > 1){
+        if (loopPlay && dataSize > 1) {
             val firstItem: Int = Int.MAX_VALUE / 2 - Int.MAX_VALUE / 2 % dataList.size
             viewPager.setCurrentItem(firstItem, false)
+        } else {
+            switchIndicator(0)
         }
-        if(autoplay){
+        if (autoplay) {
             startAutoplay()
         }
     }
 
-    private fun updateIndicator(){
+    private fun updateIndicator() {
         indicatorParent.removeAllViews()
-        if(!isNumberIndicator){
+        if (!isNumberIndicator) {
             for (i in 0 until dataSize) {
                 val indicatorLp = LinearLayout.LayoutParams(LinearLayout.LayoutParams.WRAP_CONTENT,
                     LinearLayout.LayoutParams.WRAP_CONTENT)
@@ -351,35 +356,35 @@ class BannerView @JvmOverloads constructor(context: Context, attrs: AttributeSet
 
     @SuppressLint("SetTextI18n")
     private fun switchIndicator(position: Int) {
-        if(showIndicator && adapter != null){
+        if (showIndicator && adapter != null) {
             val realPosition = position % dataSize
-            if(isNumberIndicator){
+            if (isNumberIndicator) {
                 numberTv.text = "${realPosition + 1}/$dataSize"
             } else {
                 indicatorParent.children.forEachIndexed { index, child ->
                     child.isSelected = index == realPosition
                 }
             }
-            if(indicatorParent.visibility != VISIBLE && dataSize > 1){
+            if (indicatorParent.visibility != VISIBLE && dataSize > 1) {
                 indicatorParent.visibility = VISIBLE
             }
         }
     }
 
-    fun setAutoplay(autoplay: Boolean){
+    fun setAutoplay(autoplay: Boolean) {
         this.autoplay = autoplay
-        if(autoplay){
+        if (autoplay) {
             startAutoplay()
         } else {
             stopAutoplay()
         }
     }
 
-    fun setCurrentItem(item: Int){
-        if(adapter == null){
+    fun setCurrentItem(item: Int) {
+        if (adapter == null) {
             return
         }
-        if(loopPlay){
+        if (loopPlay) {
             val realCurrentItem: Int = viewPager.currentItem
             val currentItem: Int = realCurrentItem % dataSize
             val offset = item - currentItem
@@ -389,7 +394,7 @@ class BannerView @JvmOverloads constructor(context: Context, attrs: AttributeSet
         }
     }
 
-    fun setAllowUserScrollable(scrollable: Boolean){
+    fun setAllowUserScrollable(scrollable: Boolean) {
         allowUserScrollable = scrollable
     }
 
@@ -397,15 +402,15 @@ class BannerView @JvmOverloads constructor(context: Context, attrs: AttributeSet
         viewPager.overScrollMode = overScrollMode
     }
 
-    fun addOnPageChangeCallback(callback: ViewPager2.OnPageChangeCallback){
+    fun addOnPageChangeCallback(callback: ViewPager2.OnPageChangeCallback) {
         viewPager.registerOnPageChangeCallback(callback)
     }
 
-    fun removeOnPageChangeCallback(callback: ViewPager2.OnPageChangeCallback){
+    fun removeOnPageChangeCallback(callback: ViewPager2.OnPageChangeCallback) {
         viewPager.unregisterOnPageChangeCallback(callback)
     }
 
-    fun setPageTransformer(transformer: ViewPager2.PageTransformer?){
+    fun setPageTransformer(transformer: ViewPager2.PageTransformer?) {
         viewPager.setPageTransformer(transformer)
     }
 
@@ -419,15 +424,26 @@ class BannerView @JvmOverloads constructor(context: Context, attrs: AttributeSet
         return super.dispatchTouchEvent(ev)
     }
 
-    private fun startAutoplay(){
-        if(adapter == null || dataSize <= 1 || visibility != VISIBLE){
+    override fun onVisibilityChanged(changedView: View, visibility: Int) {
+        super.onVisibilityChanged(changedView, visibility)
+        if (autoplay) {
+            if (visibility == VISIBLE) {
+                startAutoplay()
+            } else {
+                stopAutoplay()
+            }
+        }
+    }
+
+    private fun startAutoplay() {
+        if (adapter == null || dataSize <= 1 || visibility != VISIBLE) {
             return
         }
         stopAutoplay()
         autoplayJob = viewScope.launch {
-            while (isActive){
+            while (isActive) {
                 delay(autoplayInterval.toLong())
-                if(!loopPlay && viewPager.currentItem == dataSize - 1){
+                if (!loopPlay && viewPager.currentItem == dataSize - 1) {
                     viewPager.setCurrentItem(0, false)
                 } else {
                     viewPager.setCurrentItemWithAnim(viewPager.currentItem + 1,
@@ -437,18 +453,7 @@ class BannerView @JvmOverloads constructor(context: Context, attrs: AttributeSet
         }
     }
 
-    override fun onVisibilityChanged(changedView: View, visibility: Int) {
-        super.onVisibilityChanged(changedView, visibility)
-        if(autoplay){
-            if(visibility == VISIBLE){
-                startAutoplay()
-            } else {
-                stopAutoplay()
-            }
-        }
-    }
-
-    private fun stopAutoplay(){
+    private fun stopAutoplay() {
         autoplayJob?.cancel()
         autoplayJob = null
     }
@@ -456,16 +461,17 @@ class BannerView @JvmOverloads constructor(context: Context, attrs: AttributeSet
     override fun onDetachedFromWindow() {
         super.onDetachedFromWindow()
         stopAutoplay()
-        viewScope.cancel()
     }
 
-    private inner class Adapter<VB: ViewBinding, M>(private val dataList: List<M>,
-                                              private val itemKClass: KClass<VB>,
-                                              private val bind: (VB, M) -> Unit): RecyclerView.Adapter<Adapter<VB, M>.ViewHolder>(){
+    private inner class Adapter<VB: ViewBinding, M>(
+        private val dataList: List<M>,
+        private val itemKClass: KClass<VB>,
+        private val bind: (VB, M) -> Unit
+    ): RecyclerView.Adapter<Adapter<VB, M>.ViewHolder>() {
 
-        inner class ViewHolder(private val itemBinding: VB): RecyclerView.ViewHolder(itemBinding.root){
+        inner class ViewHolder(private val itemBinding: VB): RecyclerView.ViewHolder(itemBinding.root) {
 
-            fun bind(model: M){
+            fun bind(model: M) {
                 this@Adapter.bind(itemBinding, model)
             }
 
@@ -523,5 +529,4 @@ class BannerView @JvmOverloads constructor(context: Context, attrs: AttributeSet
         pageChangeAnimator.duration = duration
         pageChangeAnimator.start()
     }
-
 }
